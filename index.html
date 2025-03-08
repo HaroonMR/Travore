@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Travel Planner</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Smart Travel Planner</h1>
+        <nav>
+            <a href="#itinerary">Itinerary Generator</a>
+            <a href="#attractions">Nearby Attractions</a>
+            <a href="#chat">Live Chat</a>
+            <a href="#student-mode">Student Mode</a>
+        </nav>
+    </header>
+
+    <section id="about">
+        <h2>About the Project</h2>
+        <p>Our intelligent travel planner helps you organize stress-free trips by suggesting customized itineraries, budget-friendly attractions, and connecting with other travelers in real time.</p>
+    </section>
+
+    <section id="itinerary">
+        <h2>Itinerary Generator</h2>
+        <form id="itinerary-form">
+            <label>Destination:</label>
+            <input type="text" id="destination" required>
+            
+            <label>Budget (₹):</label>
+            <input type="number" id="budget" required>
+
+            <label>Trip Duration (days):</label>
+            <input type="number" id="duration" required>
+
+            <button type="button" onclick="generateItinerary()">Generate Itinerary</button>
+        </form>
+        <div id="itinerary-output"></div>
+    </section>
+
+    <section id="attractions">
+        <h2>Nearby Attractions</h2>
+        <p>Discover exciting spots near your destination for the ultimate adventure.</p>
+        <button onclick="showAttractions()">Show Attractions</button>
+        <div id="attractions-output"></div>
+    </section>
+
+    <section id="chat">
+        <h2>Live Chat System (Demo)</h2>
+        <p>Coming soon...</p>
+    </section>
+
+    <section id="student-mode">
+        <h2>Student Mode - Budget Tips</h2>
+        <p>Find cost-effective travel options perfect for students.</p>
+        <button onclick="showStudentTips()">Get Budget Tips</button>
+        <div id="student-output"></div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Smart Travel Planner. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
