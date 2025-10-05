@@ -3,65 +3,374 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smart Travel Planner</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Travore - AI-Powered Travel Planning</title>
+    <!-- Bootstrap CSS for responsive design -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <!-- Google Fonts for modern typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Custom Styles for Professional Travel Theme */
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: #333;
+            background-color: #f8f9fa;
+            line-height: 1.6;
+        }
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .navbar-brand {
+            font-weight: 700;
+            color: #007bff !important;
+            margin-left: -15px; /* Push logo to the leftmost edge, offsetting container padding */
+        }
+        .navbar-nav {
+            gap: 1.5rem; /* Increased gap between nav items for more spacing */
+        }
+        .nav-link {
+            color: #555 !important;
+            font-weight: 400;
+            transition: color 0.3s;
+        }
+        .nav-link:hover {
+            color: #007bff !important;
+        }
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 123, 255, 0.8), rgba(40, 167, 69, 0.6)), url('https://source.unsplash.com/random/1920x1080/?travel,destination') center/cover no-repeat;
+            color: white;
+            padding: 150px 0;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+        }
+        .btn-primary {
+            background-color: #28a745;
+            border-color: #28a745;
+            padding: 12px 30px;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: transform 0.3s;
+        }
+        .btn-primary:hover {
+            background-color: #218838;
+            border-color: #1e7e34;
+            transform: translateY(-2px);
+        }
+        /* Features Section */
+        .features {
+            padding: 80px 0;
+            background-color: white;
+        }
+        .feature-card {
+            text-align: center;
+            padding: 40px 20px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            height: 100%;
+        }
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+        .feature-icon {
+            font-size: 3rem;
+            color: #007bff;
+            margin-bottom: 20px;
+        }
+        /* Infographic Section */
+        .infographic {
+            padding: 80px 0;
+            background-color: #f8f9fa;
+        }
+        .step {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .step-icon {
+            width: 80px;
+            height: 80px;
+            background-color: #007bff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: white;
+            font-size: 2rem;
+        }
+        /* Community Section */
+        .community {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #007bff, #28a745);
+            color: white;
+        }
+        .community h2 {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        /* Future Features */
+        .future {
+            padding: 80px 0;
+            background-color: white;
+        }
+        .future-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 40px;
+            padding: 20px;
+            border-left: 4px solid #007bff;
+            background-color: #f8f9fa;
+            border-radius: 0 10px 10px 0;
+        }
+        .future-icon {
+            font-size: 2rem;
+            color: #28a745;
+            margin-right: 20px;
+        }
+        /* CTA Sections */
+        .cta {
+            padding: 60px 0;
+            text-align: center;
+            background-color: #007bff;
+            color: white;
+        }
+        .cta .btn {
+            margin: 0 10px;
+            padding: 12px 30px;
+        }
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 40px 0 20px;
+            text-align: center;
+        }
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            .hero {
+                padding: 100px 0;
+            }
+            .future-item {
+                flex-direction: column;
+                text-align: center;
+            }
+            .future-icon {
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+            .navbar-brand {
+                margin-left: -10px; /* Slightly less offset on mobile for better spacing */
+            }
+            .navbar-nav {
+                gap: 1rem; /* Slightly reduced gap on mobile to fit better in collapsed menu */
+            }
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <h1>Smart Travel Planner</h1>
-        <nav>
-            <a href="#itinerary">Itinerary Generator</a>
-            <a href="#attractions">Nearby Attractions</a>
-            <a href="#chat">Live Chat</a>
-            <a href="#student-mode">Student Mode</a>
-        </nav>
-    </header>
 
-    <section id="about">
-        <h2>About the Project</h2>
-        <p>Our intelligent travel planner helps you organize stress-free trips by suggesting customized itineraries, budget-friendly attractions, and connecting with other travelers in real time.</p>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#"><i class="fas fa-plane me-2"></i>Travore</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#community">Community</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#future">Future</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <h1>Discover the World with AI-Powered Precision</h1>
+            <p>Travore crafts personalized itineraries tailored to your preferences, budget, and time. From hidden gems to seamless bookings, your dream trip starts here.</p>
+            <a href="Plantrip.html" class="btn btn-primary btn-lg">Plan Your Trip</a>
+        </div>
     </section>
 
-    <section id="itinerary">
-        <h2>Itinerary Generator</h2>
-        <form id="itinerary-form">
-            <label>Destination:</label>
-            <input type="text" id="destination" required>
-            
-            <label>Budget (₹):</label>
-            <input type="number" id="budget" required>
-
-            <label>Trip Duration (days):</label>
-            <input type="number" id="duration" required>
-
-            <button type="button" onclick="generateItinerary()">Generate Itinerary</button>
-        </form>
-        <div id="itinerary-output"></div>
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <h2 class="text-center mb-5">Why Choose Travore?</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <h4>AI-Driven Itineraries</h4>
+                        <p>Get personalized plans based on your preferences, budget, and travel duration. Real-time price tracking and expert tips included.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h4>Community Features</h4>
+                        <p>Join chat spaces, view verified traveler rankings, and discover local recommendations from fellow adventurers.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <h4>Local Integrations</h4>
+                        <p>Seamlessly book transport, accommodations, guides, and restaurants with trusted local providers.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <section id="attractions">
-        <h2>Nearby Attractions</h2>
-        <p>Discover exciting spots near your destination for the ultimate adventure.</p>
-        <button onclick="showAttractions()">Show Attractions</button>
-        <div id="attractions-output"></div>
+    <!-- How It Works Infographic -->
+    <section class="infographic">
+        <div class="container">
+            <h2 class="text-center mb-5">How Travore Works</h2>
+            <div class="row justify-content-center">
+                <div class="col-md-10">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="step">
+                                <div class="step-icon">
+                                    <i class="fas fa-search"></i>
+                                </div>
+                                <h5>1. Tell Us Your Dream</h5>
+                                <p>Share preferences, budget, and dates. Our AI analyzes and suggests options.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="step">
+                                <div class="step-icon">
+                                    <i class="fas fa-magic"></i>
+                                </div>
+                                <h5>2. Get Personalized Plan</h5>
+                                <p>Receive a custom itinerary with hidden gems, tips, and real-time deals.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="step">
+                                <div class="step-icon">
+                                    <i class="fas fa-bookmark"></i>
+                                </div>
+                                <h5>3. Book & Explore</h5>
+                                <p>Integrate bookings and join the community for ongoing support.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <section id="chat">
-        <h2>Live Chat System (Demo)</h2>
-        <p>Coming soon...</p>
+    <!-- Community Section -->
+    <section id="community" class="community">
+        <div class="container">
+            <h2>Join the Travore Community</h2>
+            <div class="row justify-content-center">
+                <div class="col-md-8 text-center">
+                    <p>Connect with verified travelers, share stories in chat spaces, and unlock exclusive local recommendations. Your journey is better together.</p>
+                    <a href="#join" class="btn btn-light btn-lg">Join the Community</a>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <section id="student-mode">
-        <h2>Student Mode - Budget Tips</h2>
-        <p>Find cost-effective travel options perfect for students.</p>
-        <button onclick="showStudentTips()">Get Budget Tips</button>
-        <div id="student-output"></div>
+    <!-- Future Features -->
+    <section id="future" class="future">
+        <div class="container">
+            <h2 class="text-center mb-5">Coming Soon: Next-Level Adventures</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="future-item">
+                        <div class="future-icon">
+                            <i class="fas fa-gamepad"></i>
+                        </div>
+                        <div>
+                            <h5>Gamified AR Experiences</h5>
+                            <p>Explore destinations through interactive augmented reality games and challenges.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="future-item">
+                        <div class="future-icon">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <div>
+                            <h5>Reward Systems</h5>
+                            <p>Earn points for trips, reviews, and community engagement—redeem for perks and discounts.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <footer>
-        <p>&copy; 2025 Smart Travel Planner. All rights reserved.</p>
+    <!-- CTA Section -->
+    <!-- CTA Section -->
+    <section id="plan" class="cta">
+        <div class="container">
+            <h2>Ready to Start Planning?</h2>
+            <p>Explore destinations, join our community, or dive right into your next adventure.</p>
+            <a href="Plantrip.html" class="btn btn-light btn-lg">Plan Your Trip</a>
+            <a href="#join" class="btn btn-outline-light btn-lg">Join the Community</a>
+            <a href="#" class="btn btn-light btn-lg">Explore Destinations</a>
+        </div>
+    </section>
+
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <p>&copy; 2023 Travore. All rights reserved. | <a href="#" class="text-white">Privacy Policy</a> | <a href="#" class="text-white">Terms of Service</a></p>
+            <div class="mt-3">
+                <a href="#" class="text-white me-3"><i class="fab fa-facebook"></i></a>
+                <a href="#" class="text-white me-3"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="text-white me-3"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="text-white"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
     </footer>
 
-    <script src="script.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Simple JS for Smooth Scrolling -->
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
 </body>
 </html>
